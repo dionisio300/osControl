@@ -1,0 +1,4 @@
+criar venv = python -m venv .venv
+Ativar venv = .\.venv\Scripts\Activate
+instalar bibliotecas = pip install flask python-dotenv mysql-connector-python
+com o venv ativo, atualizar os requerimentos = pip freeze > requirements.txt

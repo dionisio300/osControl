@@ -1,0 +1,11 @@
+/* Altura mínima da seção principal para ocupar 100% da tela */
+.hero-section {
+    min-height: 100vh;
+    background: linear-gradient(to bottom right, #0d6efd, #0a3d62);
+}
+
+/* Footer fixo no final da página */
+.footer {
+    background: #000;
+    width: 100%;
+}
