@@ -1,3 +1,17 @@
+Passos da aula
+Confirma o deslog do github dos outros
+logar no proprio
+baixar o repositório do projeto final
+baixar o meu repositório
+copiar os arquivos para o deles
+atualizar o deles
+subir as atualizações para o PA
+fazer o .env do PA e colocar no wsgi
+e comemorar
+
+
+
+
 PASSO 1 — Criar o arquivo .env no PythonAnywhere
 
 O .env NÃO vai automático pelo GitHub, porque ele está (ou deve estar) no .gitignore.
