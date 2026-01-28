@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, redirect, render_template, url_for, request
 from dotenv import load_dotenv
 import mysql.connector
 import os
@@ -21,9 +21,37 @@ app.secret_key = os.getenv("FLASK_SECRET_KEY", "1234")
 def index():
     return render_template('index.html')
 
-@app.route('/login')
+@app.route('/login',methods = ['POST','GET'])
 def login():
+    if request.method == 'POST':
+        print('Post funcionou')
+        email = request.form.get('email')
+        senha = request.form.get('senha')
+        print(email,senha)
+
+        conexao = conectar_banco()
+        cursor = conexao.cursor(dictionary=True)
+        sql = "SELECT * FROM usuarios WHERE email = %s"
+
+        cursor.execute(sql, (email,))
+        usuario = cursor.fetchone()
+
+        if usuario:
+            if senha == usuario['senha_hash']:
+                print('Email e senha corretos')
+                return redirect(url_for('dashboard'))
+            else:
+                print('Senha errada')
+        else:
+            print('email errado')
+        cursor.close()
+        conexao.close()
+
     return render_template('login.html')
+
+@app.route('/dashboard')
+def dashboard():
+    return 'Página do dashboard'
 
 if __name__ == "__main__":
     app.run(debug=True)
